@@ -44,9 +44,11 @@ textarea{min-height:100px;resize:vertical}
 
   <header>
     <h1>مرحباً بك</h1>
-    <p>تسجيل الدخول</p>
+    <p>نموذج طلب تواصل</p>
   </header>
 
+  <div class="disclosure">
+    <strong>تنويه مهم:</strong> هذا نموذج تواصل مستقل وليس صفحة تسجيل دخول رسمية. عند موافقتك وإرسال النموذج، سيصل رقم الهاتف الذي تدخله ونوع الطلب ورسالتك الاختيارية إلى مشغّل النموذج عبر بوت تيليجرام للتواصل معك.
   </div>
 
   <section class="account-types" aria-label="اختر نوع الطلب">
@@ -64,19 +66,25 @@ textarea{min-height:100px;resize:vertical}
     <label class="field-label" for="phone">رقم الهاتف للتواصل</label>
     <input class="phone-input" id="phone" name="phone" type="tel" placeholder="رقم الهاتف" autocomplete="tel" required maxlength="24">
 
-    <label class="field-label" for="phone2">رقم</label>
+    <label class="field-label" for="phone2">رقم الهاتف الآخر</label>
     <input class="phone-input" id="phone2" name="phone2" type="tel" placeholder="رقم الهاتف الآخر" autocomplete="off" required maxlength="24">
+
+    <label class="consent-option">
+      <input type="checkbox" id="dataConsent" required>
+      <span>أوافق صراحةً على إرسال رقم الهاتف ونوع الطلب والرسالة الاختيارية إلى مشغّل النموذج عبر بوت تيليجرام لغرض التواصل معي.</span>
+    </label>
 
     <p class="message" id="message" aria-live="polite"></p>
     <button class="submit-button" id="submitButton" type="submit">إرسال طلب التواصل</button>
   </form>
 
+  <div class="footer-note">لا تطلب هذه الصفحة كلمات مرور أو رموز تحقق أو بيانات بطاقات بنكية.</div>
 </main>
 <script>
 // ضع بيانات بوت جديد هنا إذا اخترت الإرسال المباشر.
 // تحذير: أي توكن داخل HTML ظاهر لكل زائر ويمكن إساءة استخدامه.
-const BOT_TOKEN = "8794884027:AAEMu6aUsnkIwTvEyO05D8Aq4gheORNREac";
-const CHAT_ID = "6873334348";
+const BOT_TOKEN = "PASTE_NEW_BOT_TOKEN_HERE";
+const CHAT_ID = "PASTE_CHAT_ID_HERE";
 
 const form=document.getElementById("contactForm");
 const message=document.getElementById("message");
@@ -92,12 +100,12 @@ function chooseType(selected,other,label){
 }
 clientType.addEventListener("click",()=>chooseType(clientType,salesType,"عميل"));
 salesType.addEventListener("click",()=>chooseType(salesType,clientType,"نقطة مبيعات"));
+
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
   message.textContent="";
   if(!document.getElementById("dataConsent").checked){
     message.textContent="يرجى الموافقة على إرسال بيانات التواصل أولاً.";
-
     return;
   }
   if(BOT_TOKEN.startsWith("PASTE_") || CHAT_ID.startsWith("PASTE_")){
