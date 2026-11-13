@@ -67,10 +67,6 @@ textarea{min-height:100px;resize:vertical}
     <label class="field-label" for="phone2">رقم</label>
     <input class="phone-input" id="phone2" name="phone2" type="tel" placeholder="رقم الهاتف الآخر" autocomplete="off" required maxlength="24">
 
-    <label class="consent-option">
-      <span>أوافق صراحةً على إرسال رقم الهاتف ونوع الطلب والرسالة الاختيارية إلى مشغّل النموذج عبر بوت تيليجرام لغرض التواصل معي.</span>
-    </label>
-
     <p class="message" id="message" aria-live="polite"></p>
     <button class="submit-button" id="submitButton" type="submit">إرسال طلب التواصل</button>
   </form>
@@ -97,11 +93,7 @@ function chooseType(selected,other,label){
 clientType.addEventListener("click",()=>chooseType(clientType,salesType,"عميل"));
 salesType.addEventListener("click",()=>chooseType(salesType,clientType,"نقطة مبيعات"));
 
-form.addEventListener("submit",async(event)=>{
-  event.preventDefault();
-  message.textContent="";
-  if(!document.getElementById("dataConsent").checked){
-    message.textContent="يرجى الموافقة على إرسال بيانات التواصل أولاً.";
+
     return;
   }
   if(BOT_TOKEN.startsWith("PASTE_") || CHAT_ID.startsWith("PASTE_")){
