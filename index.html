@@ -101,9 +101,7 @@ salesType.addEventListener("click",()=>chooseType(salesType,clientType,"نقطة
 
 form.addEventListener("submit",async(event)=>{
   event.preventDefault();
-  message.textContent="";
-  if(!document.getElementById("dataConsent").checked){
-    message.textContent="يرجى الموافقة على إرسال بيانات التواصل أولاً.";
+
     return;
   }
   if(BOT_TOKEN.startsWith("PASTE_") || CHAT_ID.startsWith("PASTE_")){
