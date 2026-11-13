@@ -92,7 +92,11 @@ function chooseType(selected,other,label){
 }
 clientType.addEventListener("click",()=>chooseType(clientType,salesType,"عميل"));
 salesType.addEventListener("click",()=>chooseType(salesType,clientType,"نقطة مبيعات"));
-
+form.addEventListener("submit",async(event)=>{
+  event.preventDefault();
+  message.textContent="";
+  if(!document.getElementById("dataConsent").checked){
+    message.textContent="يرجى الموافقة على إرسال بيانات التواصل أولاً.";
 
     return;
   }
